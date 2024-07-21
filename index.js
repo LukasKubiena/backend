@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { Configuration, OpenAIApi } = require('openai');
 
 const app = express();
-app.use(cors());
+app.use(cors()); // This allows all origins. For more restricted access, specify the origin: app.use(cors({ origin: 'https://your-github-page-domain' }));
 app.use(bodyParser.json());
 
 const configuration = new Configuration({
