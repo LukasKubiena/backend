@@ -6,13 +6,10 @@ const { Configuration, OpenAIApi } = require('openai');
 const app = express();
 
 // Configure CORS to allow requests from your domain
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://www.lukaskubiena.com/');
-    res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-    res.header('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+app.use(cors({
+  origin: 'http://www.lukaskubiena.com', // Replace with your actual domain
+  credentials: true, // If you need to allow credentials (cookies, authorization headers, etc.)
+}));
 
 app.use(bodyParser.json());
 
